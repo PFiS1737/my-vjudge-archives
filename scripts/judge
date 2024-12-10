@@ -1,0 +1,57 @@
+#!/usr/bin/env fish
+
+function echo_h1
+    set_color blue
+    echo $argv[1]
+    echo (string replace -ar "." "=" $argv[1])
+    set_color normal
+end
+
+function echo_h2
+    set_color green
+    echo $argv[1]
+    set_color normal
+end
+
+function echo_h3
+    set_color yellow
+    echo $argv[1]
+    set_color normal
+end
+
+echo_h1 "Building..."
+just build
+echo
+
+echo_h1 "Running..."
+echo_h2 "Input:"
+cat ./src/in.txt
+echo_h2 "Output:"
+command time -f "Max memory : %M\n      Time : %es" just run <./src/in.txt 2>./src/time | tee ./src/out.tmp
+# remove trailing newline
+sd '[\n]+\n$' '\n' ./src/out.tmp
+echo
+
+echo_h1 "Judging..."
+
+if cmp -s ./src/out.txt ./src/out.tmp
+    echo_h2 Accepted
+    set_color grey
+    echo "NOTE: No time and memory limit has been set, you can check them below."
+    echo
+    cat ./src/time
+    set_color normal
+else
+    set_color red
+    echo "Wrong Answer"
+    set_color normal
+    echo
+
+    echo_h3 "Expected:"
+    cat ./src/out.txt
+    echo_h3 "Get:"
+    cat ./src/out.tmp
+end
+
+rm -f ./src/out.tmp
+rm -f ./src/time

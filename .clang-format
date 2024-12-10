@@ -1,0 +1,8 @@
+IndentWidth: 2
+Language: Cpp
+MaxEmptyLinesToKeep: 1
+ReflowComments: false
+AlignEscapedNewlines: DontAlign
+AllowShortFunctionsOnASingleLine: None
+IndentPPDirectives: AfterHash
+ColumnLimit: 90

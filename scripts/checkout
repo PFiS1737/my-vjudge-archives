@@ -1,0 +1,96 @@
+#!/usr/bin/env fish
+
+if not test -d ./archives
+    echo "Error: ./archives directory does not exist."
+    return 1
+end
+
+set id 0
+
+if test (count $argv) -eq 0
+    set fzf_result (fd . ./archives | fzf --preview-window "right,60%,border-left")
+
+    if test -z $fzf_result
+        echo "Error: No file selected."
+        return 1
+    end
+
+    set name (basename $fzf_result)
+    set id (string match -r '^[0-9]+' $name)
+else if test (count $argv) -eq 1
+    set id $argv[1]
+else
+    echo "Error: Too many arguments."
+    return 1
+end
+
+set files (fd --type file --regex "^$id(_.+)?\\.c\$" ./archives)
+
+if test (count $files) -eq 0
+    echo "Error: No files found with id: $id."
+    return 1
+end
+
+set file ''
+
+if test (count $files) -eq 1
+    set file $files[1]
+else
+    set file (echo $files | string replace -r " " "\n" | fzf --preview-window "right,60%,border-left")
+end
+
+if not test -d ./src
+    mkdir ./src
+end
+
+rm -f ./src/main.c
+rm -f ./src/in.txt
+rm -f ./src/out.txt
+
+set inner_sample_input 0
+set inner_sample_output 0
+set inner_code 0
+
+for line in (cat $file)
+    if string match -rq '^// Sample Input$' $line
+        set inner_sample_input 1
+        continue
+    end
+
+    if string match -rq '^// Sample Output$' $line
+        set inner_sample_output 1
+        continue
+    end
+
+    if test $inner_sample_input -eq 1
+        if string match -rq '^$' $line
+            set inner_sample_input 0
+            continue
+        end
+
+        string replace -r '^// ?' '' $line >>./src/in.txt
+    end
+
+    if test $inner_sample_output -eq 1
+        if string match -rq '^$' $line
+            set inner_sample_output 0
+            continue
+        end
+        string replace -r '^// ?' '' $line >>./src/out.txt
+    end
+
+
+    if string match -rq '^//.*$' $line
+        continue
+    end
+
+    if string match -rq '^#' $line
+        set inner_code 1
+    end
+
+    if test $inner_code -eq 1
+        echo $line >>./src/main.c
+    end
+end
+
+echo "File $file has been checked out to ./src/main.c"
