@@ -1,5 +1,7 @@
 CompileFlags:
-  Add: ["-std=c99"]
+  Add: [-std=c99]
 
 Diagnostics:
-  Suppress: ["deprecated-declarations"]
+  Suppress: [deprecated-declarations]
+  UnusedIncludes: None
+  MissingIncludes: None

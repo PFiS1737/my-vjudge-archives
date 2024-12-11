@@ -46,9 +46,13 @@ end
 rm -f ./src/main.c
 rm -f ./src/in.txt
 rm -f ./src/out.txt
+rm -f ./src/__main__.c
+
+printf '#include "main.c"\n\n' >>./src/main.c
 
 set inner_sample_input 0
 set inner_sample_output 0
+set inner_append_code 0
 set inner_code 0
 
 for line in (cat $file)
@@ -59,6 +63,11 @@ for line in (cat $file)
 
     if string match -rq '^// Sample Output$' $line
         set inner_sample_output 1
+        continue
+    end
+
+    if string match -rq '^// Append Code$' $line
+        set inner_append_code 1
         continue
     end
 
@@ -79,6 +88,13 @@ for line in (cat $file)
         string replace -r '^// ?' '' $line >>./src/out.txt
     end
 
+    if test $inner_append_code -eq 1
+        if string match -rq '^$' $line
+            set inner_append_code 0
+            continue
+        end
+        string replace -r '^// ?' '' $line >>./src/main.c
+    end
 
     if string match -rq '^//.*$' $line
         continue
@@ -89,7 +105,7 @@ for line in (cat $file)
     end
 
     if test $inner_code -eq 1
-        echo $line >>./src/main.c
+        echo $line >>./src/__main__.c
     end
 end
 

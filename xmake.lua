@@ -6,9 +6,9 @@ set_languages("c99")
 
 target("oj", function()
 	set_kind("binary")
-	add_files("src/main.c")
+	add_files("src/__main__.c")
 
-	add_cflags("-O2", "-Wall")
+	add_cflags("-O2", "-Wall", "-Wextra", "-Wno-deprecated-declarations")
 	add_defines("ONLINE_JUDGE")
 
 	if is_mode("debug") then
