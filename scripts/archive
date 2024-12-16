@@ -1,0 +1,49 @@
+#!/usr/bin/env fish
+
+read -P "ID: " id
+read -P "Description: " description
+
+if not test -d ./archives
+    mkdir ./archives
+end
+
+set file "./archives/$(test -n "$description"; and printf "%s_%s.c" $id $description; or echo $id.c)"
+
+while read -P "Problem: " -L problem
+    echo "// $problem" >>$file
+end
+
+echo >>$file
+echo "// Sample Input" >>$file
+for line in (cat ./src/in.txt)
+    echo "// $line" >>$file
+end
+
+echo >>$file
+echo "// Sample Output" >>$file
+for line in (cat ./src/out.txt)
+    echo "// $line" >>$file
+end
+
+set main_count 0
+set tmp_file (mktemp)
+for line in (cat ./src/main.c)
+    if test $main_count -gt 1
+        echo "// $line" >>$tmp_file
+    end
+
+    set main_count (math $main_count + 1)
+end
+
+if test $main_count -gt 1
+    echo >>$file
+    echo "// Append Code" >>$file
+    for line in (cat $tmp_file)
+        echo $line >>$file
+    end
+end
+
+echo >>$file
+for line in (cat ./src/__main__.c)
+    echo $line >>$file
+end

@@ -21,6 +21,12 @@ checkout id='':
 judge:
     @./scripts/judge
 
+new:
+    @./scripts/new
+
+archive:
+    @./scripts/archive
+
 clean:
     @xmake clean
 

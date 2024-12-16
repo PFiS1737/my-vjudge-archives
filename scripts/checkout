@@ -43,12 +43,7 @@ if not test -d ./src
     mkdir ./src
 end
 
-rm -f ./src/main.c
-rm -f ./src/in.txt
-rm -f ./src/out.txt
-rm -f ./src/__main__.c
-
-printf '#include "main.c"\n\n' >>./src/main.c
+./scripts/new -yn
 
 set inner_sample_input 0
 set inner_sample_output 0

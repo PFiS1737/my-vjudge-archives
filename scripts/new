@@ -1,0 +1,46 @@
+#!/usr/bin/env fish
+
+argparse n/onlytouching y/yes a/append -- $argv
+
+if not set -q _flag_y
+    echo "This will override your workspace."
+    while read -n 2 -P "Are you sure? (y/N): " response
+        or return 1
+        switch $response
+            case y Y
+                break
+            case n N ''
+                return 1
+            case *
+                echo Not valid input
+                continue
+        end
+    end
+end
+
+rm -f ./src/main.c
+rm -f ./src/in.txt
+rm -f ./src/out.txt
+rm -f ./src/__main__.c
+
+printf '#include "__main__.c"\n\n' >>./src/main.c
+
+touch ./src/in.txt ./src/out.txt ./src/__main__.c
+
+if not set -q _flag_n
+    while read -P "Smaple Input: " -L smaple_input
+        echo $smaple_input >>./src/in.txt
+    end
+
+    while read -P "Smaple Output: " -L smaple_output
+        echo $smaple_output >>./src/out.txt
+    end
+
+    if set -q _flag_a
+        while read -P "Append Code: " -L append_code
+            echo $append_code >>./src/main.c
+        end
+    else
+        printf "#include <stdio.h>\n\nint main() {\n\n  return 0;\n}" >>./src/__main__.c
+    end
+end
