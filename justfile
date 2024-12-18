@@ -21,8 +21,8 @@ checkout id='':
 judge:
     @./scripts/judge
 
-new:
-    @./scripts/new
+new *args:
+    @./scripts/new {{args}}
 
 archive:
     @./scripts/archive
