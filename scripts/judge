@@ -37,7 +37,7 @@ echo_h1 "Judging..."
 if cmp -s ./src/out.txt ./src/out.tmp
     echo_h2 Accepted
     set_color grey
-    echo "NOTE: No time and memory limit has been set, you can check them below."
+    echo "NOTE: No time and memory limits were set, you can check them below."
     echo
     cat ./src/time
     set_color normal
