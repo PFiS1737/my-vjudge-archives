@@ -36,7 +36,7 @@ set file ''
 if test (count $files) -eq 1
     set file $files[1]
 else
-    set file (echo $files | string replace -r " " "\n" | fzf --preview-window "right,60%,border-left")
+    set file (echo $files | string replace -ar " " "\n" | fzf --preview-window "right,60%,border-left")
 end
 
 if not test -d ./src

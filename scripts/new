@@ -23,11 +23,13 @@ rm -f ./src/in.txt
 rm -f ./src/out.txt
 rm -f ./src/__main__.c
 
-printf '#include "__main__.c"\n\n' >>./src/main.c
+printf '#include "__main__.c"\n' >>./src/main.c
 
 touch ./src/in.txt ./src/out.txt ./src/__main__.c
 
 if not set -q _flag_n
+    printf "#include <stdio.h>\n" >>./src/__main__.c
+
     while read -P "Smaple Input: " -L smaple_input
         echo $smaple_input >>./src/in.txt
     end
@@ -37,10 +39,11 @@ if not set -q _flag_n
     end
 
     if set -q _flag_a
+        printf '\n' >>./src/main.c
         while read -P "Append Code: " -L append_code
             echo $append_code >>./src/main.c
         end
     else
-        printf "#include <stdio.h>\n\nint main() {\n\n  return 0;\n}" >>./src/__main__.c
+        printf "\nint main() {\n\n  return 0;\n}" >>./src/__main__.c
     end
 end
