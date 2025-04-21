@@ -39,6 +39,7 @@ if not set -q _flag_n
     end
 
     if set -q _flag_a
+        touch ./src/__append__.cpp
         printf '#include "__append__.cpp"\n\n' >>./src/main.cpp
 
         while read -P "Append Code: " -L append_code

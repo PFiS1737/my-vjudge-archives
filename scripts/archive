@@ -27,13 +27,18 @@ end
 
 if test -f ./src/__append__.cpp
     echo >>$file
-    echo "// Append Code" >>$file
+    echo "// Append Code Start" >>$file
     for line in (cat ./src/__append__.cpp)
-        echo "// $line" >>$file
+        echo $line >>$file
     end
+    echo "// Append Code End" >>$file
 end
 
 echo >>$file
+set line_number 0
 for line in (cat ./src/main.cpp)
-    echo $line >>$file
+    if test $line_number -gt 1
+        echo $line >>$file
+    end
+    set line_number (math $line_number + 1)
 end
