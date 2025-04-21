@@ -1,5 +1,5 @@
 CompileFlags:
-  Add: [-std=c99]
+  Add: [-std=c++11]
 
 Diagnostics:
   Suppress: [deprecated-declarations]

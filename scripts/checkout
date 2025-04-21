@@ -24,7 +24,7 @@ else
     return 1
 end
 
-set files (fd --type file --regex "^$id(_.+)?\\.c\$" ./archives)
+set files (fd --type file --regex "^$id(_.+)?\\.cpp\$" ./archives)
 
 if test (count $files) -eq 0
     echo "Error: No files found with id: $id."
@@ -88,7 +88,7 @@ for line in (cat $file)
             set inner_append_code 0
             continue
         end
-        string replace -r '^// ?' '' $line >>./src/main.c
+        string replace -r '^// ?' '' $line >>./src/main.cpp
     end
 
     if string match -rq '^//.*$' $line
@@ -100,8 +100,8 @@ for line in (cat $file)
     end
 
     if test $inner_code -eq 1
-        echo $line >>./src/__main__.c
+        echo $line >>./src/__main__.cpp
     end
 end
 
-echo "File $file has been checked out to ./src/main.c"
+echo "File $file has been checked out to ./src/main.cpp"

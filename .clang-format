@@ -1,5 +1,6 @@
 IndentWidth: 2
 Language: Cpp
+Standard: c++11
 MaxEmptyLinesToKeep: 1
 ReflowComments: false
 AlignEscapedNewlines: DontAlign
