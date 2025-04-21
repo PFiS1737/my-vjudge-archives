@@ -1,4 +1,4 @@
-# my-sdust-oj-archives
+# my-pta-archives
 
 ## Requirements
 
@@ -33,3 +33,7 @@ just archive
 # 不提供 id 则调用 fzf 进行搜索
 just checkout [id]
 ```
+
+# Reference
+
+- [PTA](https://pintia.cn)
