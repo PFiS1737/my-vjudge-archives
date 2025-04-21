@@ -18,6 +18,10 @@ if not set -q _flag_y
     end
 end
 
+if not test -d ./src
+    mkdir ./src
+end
+
 rm -f ./src/main.c
 rm -f ./src/in.txt
 rm -f ./src/out.txt
