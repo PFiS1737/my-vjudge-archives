@@ -30,6 +30,7 @@ echo_h2 "Output:"
 command time -f "Max memory : %MKB\n      Time : %es" just run <./src/in.txt 2>./src/time | tee ./src/out.tmp
 # remove trailing space lines
 sed -i ':a;$!{N;ba};s/\n*$//' ./src/out.tmp
+# FIXME: 程序输出最后没有 `\n` 的给补上
 echo
 
 echo_h1 "Judging..."

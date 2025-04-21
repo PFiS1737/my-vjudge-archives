@@ -88,7 +88,7 @@ for line in (cat $file)
             set inner_append_code 0
             continue
         end
-        string replace -r '^// ?' '' $line >>./src/main.cpp
+        string replace -r '^// ?' '' $line >>./src/__append__.cpp
     end
 
     if string match -rq '^//.*$' $line
@@ -100,7 +100,7 @@ for line in (cat $file)
     end
 
     if test $inner_code -eq 1
-        echo $line >>./src/__main__.cpp
+        echo $line >>./src/main.cpp
     end
 end
 

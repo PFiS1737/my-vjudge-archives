@@ -25,15 +25,11 @@ end
 rm -f ./src/main.cpp
 rm -f ./src/in.txt
 rm -f ./src/out.txt
-rm -f ./src/__main__.cpp
+rm -f ./src/__append__.cpp
 
-printf '#include "__main__.cpp"\n' >>./src/main.cpp
-
-touch ./src/in.txt ./src/out.txt ./src/__main__.cpp
+touch ./src/main.cpp ./src/in.txt ./src/out.txt
 
 if not set -q _flag_n
-    printf "#include <stdio.h>\n" >>./src/__main__.cpp
-
     while read -P "Smaple Input: " -L smaple_input
         echo $smaple_input >>./src/in.txt
     end
@@ -43,11 +39,12 @@ if not set -q _flag_n
     end
 
     if set -q _flag_a
-        printf '\n' >>./src/main.cpp
+        printf '#include "__append__.cpp"\n\n' >>./src/main.cpp
+
         while read -P "Append Code: " -L append_code
-            echo $append_code >>./src/main.cpp
+            echo $append_code >>./src/__append__.cpp
         end
     else
-        printf "\nint main() {\n\n  return 0;\n}" >>./src/__main__.cpp
+        printf "#include <bits/stdc++.h>\n\nint main() {\n\n  return 0;\n}" >>./src/main.cpp
     end
 end

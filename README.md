@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- GNU GCC
+- GNU G++
 - fish
 - just
 - xmake
@@ -18,7 +18,7 @@
 # 输入时直接换行即可，ctrl-c 到下一个问题
 just new [-any]
 
-# NOTE: 应该总是仅编辑 ./src/__main__.c 文件
+# NOTE: 应该总是仅编辑 ./src/main.cpp 文件
 
 # 评判
 # 首次运行需无参数使用 `just` 进行初始化

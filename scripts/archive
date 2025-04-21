@@ -25,25 +25,15 @@ for line in (cat ./src/out.txt)
     echo "// $line" >>$file
 end
 
-set main_count 0
-set tmp_file (mktemp)
-for line in (cat ./src/main.cpp)
-    if test $main_count -gt 1
-        echo "// $line" >>$tmp_file
-    end
-
-    set main_count (math $main_count + 1)
-end
-
-if test $main_count -gt 1
+if test -f ./src/__append__.cpp
     echo >>$file
     echo "// Append Code" >>$file
-    for line in (cat $tmp_file)
-        echo $line >>$file
+    for line in (cat ./src/__append__.cpp)
+        echo "// $line" >>$file
     end
 end
 
 echo >>$file
-for line in (cat ./src/__main__.cpp)
+for line in (cat ./src/main.cpp)
     echo $line >>$file
 end
