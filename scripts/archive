@@ -35,10 +35,8 @@ if test -f ./src/__append__.cpp
 end
 
 echo >>$file
-set line_number 0
 for line in (cat ./src/main.cpp)
-    if test $line_number -gt 1
+    if not test $line = '#include "__append__.cpp"'
         echo $line >>$file
     end
-    set line_number (math $line_number + 1)
 end
