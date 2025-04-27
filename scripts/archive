@@ -10,6 +10,10 @@ end
 set file "./archives/$(test -n "$description"; and printf "%s_%s.cpp" $id $description; or echo $id.cpp)"
 
 while read -P "Problem: " -L problem
+    if test -z "$problem"
+        echo // >>$file
+        continue
+    end
     echo "// $problem" >>$file
 end
 
