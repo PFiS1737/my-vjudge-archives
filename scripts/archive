@@ -1,11 +1,21 @@
 #!/usr/bin/env fish
 
-read -P "ID: " id
-read -P "Description: " description
-
 if not test -d ./archives
     mkdir ./archives
 end
+
+if not count ./archives/*.cpp >/dev/null
+    set id 1
+else
+    set last_id (ls ./archives/*.cpp | sed -E 's|.*/([0-9]{4}).*|\1|' | sort -n | tail -n1)
+    set id (math $last_id + 1)
+end
+
+set id (printf "%04d" $id)
+
+echo "ID: $id"
+
+read -P "Description: " description
 
 set file "./archives/$(test -n "$description"; and printf "%s_%s.cpp" $id $description; or echo $id.cpp)"
 
