@@ -39,18 +39,19 @@ for line in (cat ./src/out.txt)
     echo "// $line" >>$file
 end
 
-if test -f ./src/__append__.cpp
+if test -f ./src/__prepend__.cpp
     echo >>$file
-    echo "// Append Code Start" >>$file
-    for line in (cat ./src/__append__.cpp)
+    echo "// Prepend Code Start" >>$file
+    for line in (cat ./src/__prepend__.cpp)
         echo $line >>$file
     end
-    echo "// Append Code End" >>$file
+    echo "// Prepend Code End" >>$file
 end
 
 echo >>$file
 for line in (cat ./src/main.cpp)
-    if not test $line = '#include "__append__.cpp"'
+    # FIXME: 多余的空行
+    if not test $line = '#include "__prepend__.cpp"'
         echo $line >>$file
     end
 end

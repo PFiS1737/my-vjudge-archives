@@ -47,10 +47,10 @@ end
 
 set inner_sample_input 0
 set inner_sample_output 0
-set inner_append_code 0
+set inner_prepend_code 0
 set inner_code 0
 
-set has_append_code 0
+set has_prepend_code 0
 
 for line in (cat $file)
     if string match -rq '^// Sample Input$' $line
@@ -63,9 +63,9 @@ for line in (cat $file)
         continue
     end
 
-    if string match -rq '^// Append Code Start$' $line
-        set inner_append_code 1
-        set has_append_code 1
+    if string match -rq '^// Prepend Code Start$' $line
+        set inner_prepend_code 1
+        set has_prepend_code 1
         continue
     end
 
@@ -87,15 +87,16 @@ for line in (cat $file)
         continue
     end
 
-    if test $inner_append_code -eq 1
-        if string match -rq '^// Append Code End$' $line
-            set inner_append_code 0
+    if test $inner_prepend_code -eq 1
+        if string match -rq '^// Prepend Code End$' $line
+            set inner_prepend_code 0
             continue
         end
-        echo $line >>./src/__append__.cpp
+        echo $line >>./src/__prepend__.cpp
         continue
     end
 
+    # FIXME: 导致了代码中有注释的行也被删除
     if string match -rq '^//.*$' $line
         continue
     end
@@ -105,9 +106,9 @@ for line in (cat $file)
     end
 
     if test $inner_code -eq 1
-        if test $has_append_code -eq 1
-            printf '#include "__append__.cpp"\n\n' >>./src/main.cpp
-            set has_append_code 0
+        if test $has_prepend_code -eq 1
+            printf '#include "__prepend__.cpp"\n\n' >>./src/main.cpp
+            set has_prepend_code 0
         end
         echo $line >>./src/main.cpp
     end
