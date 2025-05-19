@@ -50,8 +50,6 @@ set inner_sample_output 0
 set inner_prepend_code 0
 set inner_code 0
 
-set has_prepend_code 0
-
 for line in (cat $file)
     if string match -rq '^// Sample Input$' $line
         set inner_sample_input 1
@@ -65,7 +63,6 @@ for line in (cat $file)
 
     if string match -rq '^// Prepend Code Start$' $line
         set inner_prepend_code 1
-        set has_prepend_code 1
         continue
     end
 
@@ -106,9 +103,9 @@ for line in (cat $file)
     end
 
     if test $inner_code -eq 1
-        if test $has_prepend_code -eq 1
+        if test $inner_prepend_code -eq 2
             printf '#include "__prepend__.cpp"\n\n' >>./src/main.cpp
-            set has_prepend_code 0
+            set inner_prepend_code 0
         end
         echo $line >>./src/main.cpp
     end
