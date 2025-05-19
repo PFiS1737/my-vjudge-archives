@@ -89,15 +89,15 @@ for line in (cat $file)
 
     if test $inner_prepend_code -eq 1
         if string match -rq '^// Prepend Code End$' $line
-            set inner_prepend_code 0
+            # INFO: magic number 2: means the prepend code has been read
+            set inner_prepend_code 2
             continue
         end
         echo $line >>./src/__prepend__.cpp
         continue
     end
 
-    # FIXME: 导致了代码中有注释的行也被删除
-    if string match -rq '^//.*$' $line
+    if string match -rq '^//.*$' $line; and test $inner_prepend_code -ne 2
         continue
     end
 
