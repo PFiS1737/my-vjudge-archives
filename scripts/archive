@@ -49,9 +49,13 @@ if test -f ./src/__prepend__.cpp
 end
 
 echo >>$file
+set has_lines 0
 for line in (cat ./src/main.cpp)
-    # FIXME: 多余的空行
-    if not test $line = '#include "__prepend__.cpp"'
+    if test $line = '#include "__prepend__.cpp"'
+        continue
+    end
+    if test $has_lines -eq 1; or not string match -rq '^$' $line
+        set has_lines 1
         echo $line >>$file
     end
 end
