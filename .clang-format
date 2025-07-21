@@ -1,9 +1,10 @@
 IndentWidth: 2
 Language: Cpp
-Standard: c++03
+Standard: c++14
 MaxEmptyLinesToKeep: 1
 ReflowComments: false
 AlignEscapedNewlines: DontAlign
 AllowShortFunctionsOnASingleLine: None
 IndentPPDirectives: AfterHash
 ColumnLimit: 90
+IndentCaseLabels: true

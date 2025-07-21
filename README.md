@@ -1,10 +1,6 @@
-# my-sdust-oj-archives-cpp
+# my-vjudge-archives-cpp
 
-我的 SDUST OJ 归档，使用 C++ 语言。
-
-评判程序使用 Append 模式，它将会插入在你写的代码的后面。
-
-查看 `pta` 分支，了解 Prepend 模式的使用。
+我的 vjudge 归档，使用 C++ 语言。
 
 ## Requirements
 
@@ -18,13 +14,9 @@
 
 ```sh
 # 创建源文件
-#   -a 启用 Append Code 模式
 #   -n 仅创建文件而不询问内容
 #   -y 默认确定
-# 输入时直接换行即可，ctrl-c 到下一个问题
-just new [-any]
-
-# NOTE: 应该总是仅编辑 ./src/main.cpp 文件
+just new [-ny]
 
 # 评判
 # 首次运行需无参数使用 `just` 进行初始化
@@ -42,4 +34,4 @@ just checkout [id]
 
 # Reference
 
-- [SDUST OJ](http://192.168.119.211/JudgeOnline/) (校内局域网访问)
+- [vjudge](https://vjudge.net/problem)

@@ -1,10 +1,10 @@
 add_rules("mode.debug", "mode.release")
 
-set_project("pta")
+set_project("vjudge")
 set_version("0.0.0")
-set_languages("gnuxx98")
+set_languages("gnuxx14")
 
-target("pta", function()
+target("vjudge", function()
 	set_kind("binary")
 	add_files("src/main.cpp")
 

@@ -35,15 +35,5 @@ end
 
 echo >>$file
 for line in (cat ./src/main.cpp)
-    if test $line = '#include "__append__.cpp"'
-        continue
-    end
     echo $line >>$file
-end
-
-if test -f ./src/__append__.cpp
-    echo "// Append Code" >>$file
-    for line in (cat ./src/__append__.cpp)
-        echo $line >>$file
-    end
 end

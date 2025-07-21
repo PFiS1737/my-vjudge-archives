@@ -47,7 +47,6 @@ end
 
 set inner_sample_input 0
 set inner_sample_output 0
-set inner_append_code 0
 set inner_code 0
 
 for line in (cat $file)
@@ -58,11 +57,6 @@ for line in (cat $file)
 
     if string match -rq '^// Sample Output$' $line
         set inner_sample_output 1
-        continue
-    end
-
-    if string match -rq '^// Append Code$' $line
-        set inner_append_code 1
         continue
     end
 
@@ -84,11 +78,6 @@ for line in (cat $file)
         continue
     end
 
-    if test $inner_append_code -eq 1
-        echo $line >>./src/__append__.cpp
-        continue
-    end
-
     if string match -rq '^//.*$' $line
         continue
     end
@@ -100,10 +89,6 @@ for line in (cat $file)
     if test $inner_code -eq 1
         echo $line >>./src/main.cpp
     end
-end
-
-if test $inner_append_code -eq 1
-    printf '#include "__append__.cpp"\n' >>./src/main.cpp
 end
 
 echo "File $file has been checked out to ./src/main.cpp"
