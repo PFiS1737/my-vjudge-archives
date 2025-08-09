@@ -19,3 +19,8 @@
 - [官方题解 (en)](https://codeforces.com/contest/2038/attachments/download/28397/presentation_eng.pdf)
 - 参考 1: [CSDN Qππ](https://blog.csdn.net/2302_81590667/article/details/143902852)
 - 参考 2: [博客园 extractstars](https://www.cnblogs.com/extractstars/p/18559773)
+
+## [2024-2025 CTU Open Contest](https://codeforces.com/gym/105442)
+
+- [官方题解](https://cdn.vjudge.net.cn/3d015448c229232bb16c95388e9f6886)
+- 参考 1: [hackmd @PeppaBlack](https://hackmd.io/@PeppaBlack/SyGsdkeWke)
