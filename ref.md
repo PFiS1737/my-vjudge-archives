@@ -24,3 +24,9 @@
 
 - [官方题解](https://cdn.vjudge.net.cn/3d015448c229232bb16c95388e9f6886)
 - 参考 1: [hackmd @PeppaBlack](https://hackmd.io/@PeppaBlack/SyGsdkeWke)
+
+## [CCPC 25 北京](https://codeforces.com/gym/105851)
+
+- [官方题解 (en)](https://codeforces.com/gym/105851/attachments/download/31235/solution.pdf)
+- 参考 1: [blog 小明の雜貨鋪](https://kobicgend.top/posts/9151d4ed.html)
+- 参考 2: [知乎 Sicko](https://zhuanlan.zhihu.com/p/1904180221176976273)
