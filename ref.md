@@ -39,3 +39,8 @@
 - 参考 2: [CSDN KyollBM](https://blog.csdn.net/qq_61422664/article/details/149360627)
 - 参考 3: [博客园 sizeof127](https://www.cnblogs.com/sizeof127/p/18967138)
 - 后日谈: [知乎](https://www.zhihu.com/question/1911444765968429459)
+
+## [CCPC 2025 四川](https://codeforces.com/gym/105949)
+
+- [官方题解](https://cdn.vjudge.net.cn/84238bda384f4ffbf6d01e57285d52be)
+- 参考 1: [博客园 maburb](https://www.cnblogs.com/maburb/p/18979312)
