@@ -44,3 +44,10 @@
 
 - [官方题解](https://cdn.vjudge.net.cn/84238bda384f4ffbf6d01e57285d52be)
 - 参考 1: [博客园 maburb](https://www.cnblogs.com/maburb/p/18979312)
+
+## [CCPC 2022 湖北](https://codeforces.com/gym/103729)
+
+- [官方题解](https://cdn.vjudge.net.cn/9f4417ac43aae594c046189d955ad3fb)
+- 参考 1: [知乎 每日一棵splay](https://zhuanlan.zhihu.com/p/564121180)
+- 参考 2: [blog Unclezhou's Blog](https://unclezhou.top/556.html)
+- 参考 3: [知乎 yycQAQ](https://zhuanlan.zhihu.com/p/690803235)
