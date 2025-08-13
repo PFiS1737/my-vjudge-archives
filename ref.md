@@ -13,6 +13,7 @@
 - [官方题解](https://cdn.vjudge.net.cn/6e4c07336fe6b626d7b53b1be279ae58)
 - 参考 1: [博客园 cjjsb](https://www.cnblogs.com/cjjsb/p/18982434)
 - 参考 2: [知乎 wibyuan](https://zhuanlan.zhihu.com/p/1925082868499060714)
+- 后日谈: [知乎](https://www.zhihu.com/question/1924858628491420080)
 
 ## [ICPC 2024-2025 东北欧与南伏尔加](https://codeforces.com/contest/2038)
 
@@ -30,3 +31,11 @@
 - [官方题解 (en)](https://codeforces.com/gym/105851/attachments/download/31235/solution.pdf)
 - 参考 1: [blog 小明の雜貨鋪](https://kobicgend.top/posts/9151d4ed.html)
 - 参考 2: [知乎 Sicko](https://zhuanlan.zhihu.com/p/1904180221176976273)
+
+## [CCPC 2025 福建](https://codeforces.com/gym/105977)
+
+- [官方题解](https://codeforces.com/gym/105977/attachments/download/32216/Slide.pdf)
+- 参考 1: [博客园 udiandianis](https://www.cnblogs.com/udiandianis/p/18973359)
+- 参考 2: [CSDN KyollBM](https://blog.csdn.net/qq_61422664/article/details/149360627)
+- 参考 3: [博客园 sizeof127](https://www.cnblogs.com/sizeof127/p/18967138)
+- 后日谈: [知乎](https://www.zhihu.com/question/1911444765968429459)
