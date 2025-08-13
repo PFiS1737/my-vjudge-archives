@@ -8,7 +8,7 @@ set_policy("run.autobuild", true)
 
 set_project("vjudge")
 set_version("0.0.0")
-set_languages("gnuxx14")
+set_languages("gnuxx17")
 
 target("vjudge", function()
 	set_kind("binary")
